@@ -22,3 +22,5 @@ const person = {
 person.fullName = "jok owiee"
 console.log(person.fullName);
 console.table(person);
+// fitur getter dan setter tidak terlalu populer di kalangan programmer js
+// tetapi fitur ini membuat JS tidak kalah dengan bahasa pemrograman lainnya seperti java, c# dan php
