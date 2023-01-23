@@ -30,12 +30,76 @@ console.info(lainnya); //sisanya data yang tidak tertampung di keluarkan dalam b
 console.log(" -------------------- ");
 // contoh destructuring objek
 
-const mobil = { 
+let mobil = { 
     nama: "suzaki",
     warna: "merah",
     mesin: 3500
 };
 const namaMobil = mobil.nama; //cara lama
 console.info(namaMobil);
-const {x,y,z} = mobil;
-console.log(x);
+let {nama, warna, mesin} = mobil;
+console.log(nama); // cara destrukturing
+// nama var utk dipake destrukturing harus sama dengan properti dalam objek tsb
+// misal kita destrukturing properti yang banyak namun kita hanya ingin ambil sebagian saja
+let dataJual = {
+    namaBarang : "kulkas",
+    kodeId : 12321232121,
+    harga : 10_000,
+    asalNegara : "jepang",
+    jumlah : 200
+};
+let {namaBarang, kodeId, ...others} = dataJual; // ...others utk menyimpan data diluar namaBarang dan kodeId
+console.log(namaBarang);
+console.log(others);
+
+// destrukturing nested object
+const orang = {
+    prov : "aceh",
+    kab : {
+        kode : 1105,
+        kec : "idi rayeuk",
+        desa : "snb dalam",
+        dusun : "alue pinang"
+    },
+    hobi : "manjat"
+};
+let {prov,kab:{kode,kec,desa,dusun}, hobi} = orang;
+console.log(prov);
+console.log(kode); //destruktur kab-kode
+//tidak bs destruk kab karna sudah didestruk
+// console.log(kab); hasil undefined
+
+//destrukturing function parameter
+// tidak hanya dilakukan d variabel tetapi juga di dalam function parameter
+// hal ini membuat kita mudah ketika ingin mengambil nested data dalam array atau objek dalam function
+// contoh :
+// ---
+function displayPerson(wong){ //cara lama
+    console.info(wong.firstN);
+    console.info(wong.middleN);
+    console.info(wong.lastN);
+};
+const wong = {
+    firstN: "jook ooh",
+    middleN : "pakd ehh",
+    lastN : "ouwiich"
+};
+displayPerson(wong);
+// -------
+function displayPerson({firstN, middleN,lastN}){
+    console.log(firstN);
+    console.log(middleN);
+    console.log(lastN);
+}
+displayPerson(wong); // cara destrukturing
+
+// ---
+function penjumlahan(array){ //cara lama
+    return array[0]+ array[1];
+}
+console.log(penjumlahan([1,1]));
+// ---
+function tambah([a,b]){
+    return a+b;
+};
+console.log(tambah([3,5]));
