@@ -103,3 +103,37 @@ function tambah([a,b]){
     return a+b;
 };
 console.log(tambah([3,5]));
+
+// destrukturing tanpa data
+// dengan default value
+//misal array tanpa data atau objek tanpa properti
+const jeneng = ["jokau", "kowau"]; //hanya ada 2 data
+const [name1, name2, name3="ini default"] = jeneng; // namun dipanggil 3, maka tetapkan default
+console.log(name1, name2, name3); // name3 tidak ada data di array jeneng tp ada nilai default
+
+// ---contoh pada object
+const hewan = {
+    jenis: "mamalia",
+    ukuran: "sangat besar",
+};
+let {jenis,color="hitam", ukuran}=hewan;
+console.log(jenis);
+console.log(color); //terisi otomatis hitam jika objek tidak memiliki color alias terisi nilai default
+console.log(ukuran);
+
+/* ---catatan---
+ * saat destrukturing array, nama variabel bebas
+ * saat destrukturing objek, nama variabel harus sama dengan properti
+ * namun kita bs mengganti nama variabel lain pada properti dg cara inisiasi nama variabel
+ * pengganti pada destrukturing dg titik 2
+ * 
+ * contoh:
+ */
+const leptop ={
+    ssd:"350 Gb",
+    ram: "12 Gb",
+    merk: "acer"
+};
+let {ssd, ram:memori, merk: brand} = leptop; // inisiasi nama var yg berbeda dg properti
+console.log(ssd);
+console.log(memori); // nama var memori menggantikan ram
